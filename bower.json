@@ -1,0 +1,21 @@
+{
+  "name": "form-upload-with-multifile-attachment",
+  "description": "Send a form with some files attached using jQuery (client) and Express.js (server)",
+  "main": "bin/www.js",
+  "authors": [
+    "Marcello Messori"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}

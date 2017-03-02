@@ -1,0 +1,26 @@
+{
+  "name": "form-upload-with-multifile-attachment",
+  "version": "1.0.0",
+  "description": "Send a form with some files attached using jQuery (client) and Express.js (server)",
+  "main": "bin/www.js",
+  "scripts": {
+    "start": "node bin/www",
+    "test": "node_modules/.bin/mocha test/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/double-m/form-upload-with-multifile-attachment"
+  },
+  "author": "Marcello Messori",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "supertest": "^2.0.1"
+  }
+}

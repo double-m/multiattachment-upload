@@ -6,8 +6,8 @@
     <link href="components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
   </head>
-
   <body>
+
     <div>
       <h1>Create a Document</h1>
       <table class="table-striped table-hover table-condensed">
@@ -25,5 +25,15 @@
         </tr>
       </table>
     </div>
+
+    <div id="dropZone"
+      ondragenter="dropZone.onDragEnter(event)"
+      ondragover="dropZone.onDragOver(event)"
+      ondrop="dropZone.onDrop(event)"></div>
+
+    <div>
+      <input type="button" id="upload" value="Create" />
+    </div>
+
   </body>
 </html>

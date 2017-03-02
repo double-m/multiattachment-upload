@@ -1,3 +1,13 @@
 table {
-    min-width: 500px
+  min-width: 500px
+}
+
+#dropZone {
+  min-height: 200px;
+  white-space: pre;
+  border: 1px solid black;
+}
+#dropZone div.dz-starting-message {
+  text-align: center;
+  margin-top: 80px;
 }

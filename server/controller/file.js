@@ -1,6 +1,10 @@
 'use strict';
 
-const multiparty = require('multiparty');
+const multiparty = require('multiparty')
+    , log4js = require('log4js');
+
+log4js.configure('./server/log4js.json');
+const logger = log4js.getLogger('file controller');
 
 module.exports = {
   uploadAction: uploadAction
@@ -12,11 +16,11 @@ function uploadAction(request, response) {
   form.parse(request, function(err, fields, files) {
 	if (!files) {
 	  response.status(400).send();
-	  console.log('no files to save');
+	  logger.warn('no files to save');
 	  return false;  
 	}
 
 	response.status(201).send(JSON.stringify(files));
-	console.log('saved ' + Object.keys(files).length + ' files');
+	logger.info('saved ' + Object.keys(files).length + ' files');
   });  
 }

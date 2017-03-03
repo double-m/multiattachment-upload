@@ -1,5 +1,6 @@
 /node_modules/
 /nbproject/
+/logs/
 /client/public/components/
 !/client/public/components/.gitkeep
 npm-debug.log

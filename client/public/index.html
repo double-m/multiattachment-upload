@@ -10,26 +10,37 @@
 
     <div>
       <h1>Create a Document</h1>
-      <table class="table-striped table-hover table-condensed">
-        <tr class="info">
-          <th>Field1</th>
-          <th>Field2</th>
-          <th>Filed3</th>
-          <th></th>
-        </tr>
-        <tr>
-          <td><input type="text" class="doc-input-field" name="field1" value="precompiled 1" /></td>
-          <td><input type="text" class="doc-input-field" name="field2" value="precompiled 2" /></td>
-          <td><input type="text" class="doc-input-field" name="field3" value="precompiled 3" /></td>
-          <td><input type="button" id="doc-fields-clear" value="cancel" /></td>
-        </tr>
-      </table>
+
+      <form method="POST" action="/api/document">
+
+        <table class="table-striped table-hover table-condensed">
+          <tr class="info">
+            <th>Field1</th>
+            <th>Field2</th>
+            <th>Filed3</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><input type="text" class="doc-input-field" name="field1" value="precompiled 1" /></td>
+            <td><input type="text" class="doc-input-field" name="field2" value="precompiled 2" /></td>
+            <td><input type="text" class="doc-input-field" name="field3" value="precompiled 3" /></td>
+            <td><input type="button" id="doc-fields-clear" value="cancel" /></td>
+          </tr>
+        </table>
+
+        <div id="form-files"></div>
+
+      </form>
     </div>
 
+    <label for="dropZone">Drop Zone</label>
     <div id="dropZone"
       ondragenter="dropZone.onDragEnter(event)"
       ondragover="dropZone.onDragOver(event)"
       ondrop="dropZone.onDrop(event)"></div>
+
+    <label for="upload-document-output">Upload document output</label>
+    <div id="upload-document-output" class="upload-output">UPLOAD DOCUMENT RESULTS...</div>
 
     <div>
       <input type="button" id="upload" value="Create" />

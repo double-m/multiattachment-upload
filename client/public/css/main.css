@@ -2,11 +2,24 @@ table {
   min-width: 500px
 }
 
+label {
+  margin-top: 20px;
+}
+
 #dropZone {
+  margin-top: 20px;
   min-height: 200px;
   white-space: pre;
   border: 1px solid black;
 }
+
+.upload-output {
+  margin-bottom: 20px;
+  min-height: 100px;
+  white-space: pre;
+  border: 1px solid gray;
+}
+
 #dropZone div.dz-starting-message {
   text-align: center;
   margin-top: 80px;

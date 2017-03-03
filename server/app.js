@@ -1,40 +1,48 @@
 'use strict';
 
 const express = require('express')
+	, multiparty = require('multiparty')
     , bodyParser = require('body-parser')
-    , os = require('os');
+	, util = require('util');
 
-var app = express();
+let app = express();
 
 app.use(bodyParser.json());
 
 app.use('/', express.static('client/public'));
 
-app.post('/api/documents', function(request, response) {
-  var doc = request.body.doc;
+app.post('/api/documents', postDocumentsAction);
 
-  if (!doc) {
-    let outputMessage = 'not saved document: ' + JSON.stringify(doc) + os.EOL;
+app.post('/api/files', postFilesAction);
 
-    response.status(400).send(outputMessage);
-    console.log(outputMessage);
+module.exports = app;
 
+// Controller Actions
+
+function postDocumentsAction(request, response) {
+  let doc = request.body;
+
+  if (Object.keys(doc).length === 0) {
+    response.status(400).send();
+	console.log('not document to save');
     return false;
   }
 
-  let outputMessage = 'saved a new doc: ' + JSON.stringify(doc) + os.EOL;
+  response.status(201).send();
+  console.log('saved a new document');
+}
 
-  response.status(201).send(outputMessage);
-  console.log(outputMessage);
-});
+function postFilesAction(request, response) {
+  let form = new multiparty.Form();
 
-app.post('/api/files', function(request, response) {
-  var file = request.body.file;
+  form.parse(request, function(err, fields, files) {
+	if (!files) {
+	  response.status(400).send();
+	  console.log('no files to save');
+	  return false;  
+	}
 
-  let outputMessage = 'called /api/files via POST' + os.EOL;
-
-  response.status(201).send(outputMessage);
-  console.log(outputMessage);
-});
-
-module.exports = app;
+	response.status(201).send(JSON.stringify(files));
+	console.log('saved ' + Object.keys(files).length + ' files');
+  });  
+}

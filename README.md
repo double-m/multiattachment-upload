@@ -46,8 +46,8 @@ bower
 Then you need to type:
 
 ```
-git clone https://github.com/double-m/form-upload-with-multifile-attachment
-cd form-upload-with-multifile-attachment
+git clone https://github.com/double-m/multiattachment-upload
+cd multiattachment-upload
 npm install
 bower install
 ```

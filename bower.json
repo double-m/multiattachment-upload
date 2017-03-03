@@ -1,5 +1,5 @@
 {
-  "name": "form-upload-with-multifile-attachment",
+  "name": "multiattachment-upload",
   "description": "Send a form with some files attached using jQuery (client) and Express.js (server)",
   "main": "bin/www.js",
   "authors": [

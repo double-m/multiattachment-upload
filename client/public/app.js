@@ -6,7 +6,25 @@ $(document).ready(function(){
   });
 
   $('#upload').click(function () {
-    uploadFiles(dropZone.getFormData());
+	var request = new XMLHttpRequest();
+	request.open('POST', '/api/files');
+	request.onreadystatechange = function() {
+	  if (request.readyState === XMLHttpRequest.DONE) {
+		if (request.status === 201) {
+		  let responseObj = JSON.parse(request.responseText)
+		    , responseObjKeys = Object.keys(responseObj);
+
+		  for (let i=0; i<responseObjKeys.length; i++) {
+			document.getElementById('file_' + i + '_path').value = responseObj[i][0].path;
+		  }
+
+		  uploadDocument();
+		} else {
+		  console.log('Something went wrong when uploading the files:\n' + request.responseText);
+		}
+	  }
+	};
+	request.send(dropZone.getFormData());
   });
 
   $('#document-form').submit(function(event) {
@@ -16,34 +34,6 @@ $(document).ready(function(){
 
   dropZone.clear();
 });
-
-function uploadFiles(formData) {
-  $.ajax({
-	url: '/api/files',
-	type: 'POST',
-	data: formData,
-	cache: false,
-	dataType: 'json',
-	processData: false,
-	contentType: false,
-	success: function (data, textStatus, jqXHR) {
-	  if (typeof data.error !== 'undefined') {
-		console.log('ERRORS: ' + data.error);
-	  }
-
-	  $.each(data, function(arrayFileKey, arrayFileValue) {
-		var fileInfo = arrayFileValue[0];
-
-		$('#file_' + arrayFileKey + '_path').val(fileInfo.path);
-	  });
-
-	  uploadDocument();
-	},
-	error: function (jqXHR, textStatus, errorThrown) {
-	  console.log('ERRORS: ' + textStatus);
-	}
-  });
-}
 
 function uploadDocument() {
   $.ajax({
@@ -62,7 +52,7 @@ function uploadDocument() {
 	  dropZone.clear();
 	},
 	error: function (jqXHR, textStatus, errorThrown) {
-	  console.log('ERRORS: ' + data.error);
+	  console.log('ERRORS: ' + textStatus);
 	}
   });
 }

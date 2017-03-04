@@ -8,6 +8,8 @@ const express = require('express')
 let app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use('/', express.static('client/public'));
 
 app.post('/api/documents', documentUploadAction);

@@ -16,7 +16,6 @@ label {
 .upload-output {
   margin-bottom: 20px;
   min-height: 100px;
-  white-space: pre;
   border: 1px solid gray;
 }
 

@@ -14,7 +14,7 @@
   "author": "Marcello Messori",
   "license": "GPL-3.0",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.17.0",
     "express": "^4.14.0",
     "log4js": "^1.1.1",
     "multiparty": "^4.1.3"

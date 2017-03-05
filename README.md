@@ -1,34 +1,42 @@
-# Upload a Document with N Files attached
+# Upload a Document with N Files associated
 
 
 ## Description
 
 ### How it works
 
-This is a demonstration of how a web form carrying some textual data and N files can be managed client-side and server-side.
+This is a demonstration of how a web form carrying some textual data and N files
+can be managed client-side and server-side.
 
-What we want to have in the server is:
+From the web browser point of view, we will:
 
-- the textual fields present in the form (describing what here is generically called a "document"),
-- the files dropped in a box (the *DropZone*),
-- the association between the document and the files.
+- upload the files to the server,
+- wait for the server's response carrying the path of the uploaded files (public
+  URL / filesystem),
+- upload the document's form data with additional info about the associated
+  files (path and other info).
 
-The chosen workflow, from the web browser point of wiew, is:
+From the server(s) point of view, two calls will be received on two different routes:
 
-- upload the files,
-- wait for the response carrying the resulting path of the uploaded files in the server's file system,
-- upload the document with the file paths as dynamically added form fields.
+- `/api/files` will receive the files and answer with their new path (public
+  URL / filesystem);
+- `/api/documents` will receive the form data related to the document and its
+  associated files.
 
 ### Q/A
 
-**Q:** What are the technologies involved?
+**Q:** What are the technologies involved?<br/>
 **A:** Node.js/Express.js on the server-side and Vanilla JS on the client-side.
 
-**Q:** Fine, so why don't we just upload all of this data as a whole?
-**A:** Because this is just a demonstration :) waiting for being reimplemented with a different server-side technology where the "whole" will lack the W...
+**Q:** Fine, so why don't we just upload all of this data as a whole?<br/>
+**A:** Because this is just a demonstration :) waiting for being re-implemented
+       with a different server-side technology and strategy (e.g. two different
+       servers for the two routes).
 
-**Q:** Is the data persisted, let's say in some nosql-thing?
-**A:** Nope :) We just upload, read the response message saying that all is fine, than leave all the temporary data at its destiny.
+**Q:** Is the data persisted, let's say in some nosql-thing?<br/>
+**A:** Nope :) The user will only select the files, fill the data and click on
+       *Upload*; than read the response message summarizing the information
+       received by the server and leave the uploaded data to its destiny.
 
 
 ## Getting it to work
@@ -74,5 +82,7 @@ npm test
 
 ### How to use it
 
-The client-side application is served by Express.js, so point a modern browser to [localhost:3000](http://localhost:3000), drop some files in the box and click on the *Create* button (some precompiled data will make this operation quicker).
+The client-side application is served by Express.js, so point a modern browser
+to [localhost:3000](http://localhost:3000), drop some files in the box and click
+on the *Create* button (some precompiled data will make this operation quicker).
 

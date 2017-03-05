@@ -5,7 +5,7 @@
 
 ### How it works
 
-This is a demonstration of how a web form carrying some data and N files can be managed client-side and server side.
+This is a demonstration of how a web form carrying some textual data and N files can be managed client-side and server-side.
 
 What we want to have in the server is:
 
@@ -22,7 +22,7 @@ The chosen workflow, from the web browser point of wiew, is:
 ### Q/A
 
 **Q:** What are the technologies involved?
-**A:** Node.js/Express.js on the server-side and li'l old jQuery on the client-side.
+**A:** Node.js/Express.js on the server-side and Vanilla JS on the client-side.
 
 **Q:** Fine, so why don't we just upload all of this data as a whole?
 **A:** Because this is just a demonstration :) waiting for being reimplemented with a different server-side technology where the "whole" will lack the W...
